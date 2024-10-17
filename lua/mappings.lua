@@ -11,5 +11,3 @@ map("n", "N", "Nzzzv")
 map("x", "<leader>p", [["_dP]])
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
-vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })
-
