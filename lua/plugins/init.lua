@@ -11,6 +11,7 @@ return {
     config = function()
       local lspconfig = require "lspconfig"
 
+      lspconfig.rust_analyzer.setup {}
       lspconfig.ts_ls.setup {
         on_attach = function(client, bufnr)
           local opts = { noremap = true, silent = true }
