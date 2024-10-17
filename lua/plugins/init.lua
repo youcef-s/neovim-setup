@@ -12,8 +12,10 @@ return {
       local lspconfig = require "lspconfig"
 
       lspconfig.rust_analyzer.setup {}
+      lspconfig.jsonls.setup {}
+      lspconfig.lua_ls.setup {}
       lspconfig.ts_ls.setup {
-        on_attach = function(client, bufnr)
+        on_attach = function(bufnr)
           local opts = { noremap = true, silent = true }
 
           vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
