@@ -5,6 +5,39 @@ return {
     opts = require "configs.conform",
   },
   {
+    "prisma/vim-prisma",
+    ft = "prisma",
+    config = function()
+      vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+        pattern = "*.prisma",
+        command = "set filetype=prisma"
+      })
+    end
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = function()
+      return {
+        ensure_installed = {
+          "bash-language-server",
+          "checkmake",
+          "clangd",
+          "css-lsp",
+          "docker-compose-language-service",
+          "dockerfile-language-server",
+          "json-lsp",
+          "jsonld-lsp",
+          "lua-language-server",
+          "prisma-language-server",
+          "rust-analyzer",
+          "typescript-language-server",
+          "yaml-language-server",
+        },
+        automatic_installation = true,
+      }
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
@@ -32,6 +65,7 @@ return {
         "dockerls",
         "docker_compose_language_service",
         "yamlls",
+        "prismals",
       }
 
       for _, server in ipairs(servers) do
