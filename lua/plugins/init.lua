@@ -16,30 +16,56 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    opts = function()
-      return {
-        ensure_installed = {
-          "bash-language-server",
-          "checkmake",
-          "clangd",
-          "css-lsp",
-          "docker-compose-language-service",
-          "dockerfile-language-server",
-          "json-lsp",
-          "jsonld-lsp",
-          "lua-language-server",
-          "prisma-language-server",
-          "rust-analyzer",
-          "typescript-language-server",
-          "yaml-language-server",
+    lazy = false,
+    priority = 1000, -- Load Mason first
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+          }
         },
         automatic_installation = true,
-      }
+      })
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    priority = 999,
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "bashls",
+          "clangd",
+          "cssls",
+          "docker_compose_language_service",
+          "dockerls",
+          "jsonls",
+          "lua_ls",
+          "prismals",
+          "rust_analyzer",
+          "ts_ls",
+          "yamlls",
+          "solidity_ls_nomicfoundation"
+        },
+        automatic_installation = true,
+      })
     end,
   },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    priority = 998,
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
     config = function()
       local lspconfig = require "lspconfig"
       local on_attach = function(client, bufnr)
@@ -56,22 +82,26 @@ return {
         })
       end
 
+      -- Server configurations
       local servers = {
-        "rust_analyzer",
-        "jsonls",
-        "lua_ls",
-        "clangd",
-        "ts_ls",
-        "dockerls",
-        "docker_compose_language_service",
-        "yamlls",
-        "prismals",
+        bashls = {},
+        cssls = {},
+        rust_analyzer = {},
+        jsonls = {},
+        lua_ls = {},
+        clangd = {},
+        ts_ls = {},
+        dockerls = {},
+        docker_compose_language_service = {},
+        yamlls = {},
+        prismals = {},
+        solidity_ls_nomicfoundation = {}
       }
 
-      for _, server in ipairs(servers) do
-        lspconfig[server].setup {
-          on_attach = on_attach,
-        }
+      -- Setup each server
+      for server, config in pairs(servers) do
+        config.on_attach = on_attach
+        lspconfig[server].setup(config)
       end
     end,
   },
@@ -80,5 +110,4 @@ return {
     lazy = false,
     event = "BufEnter",
   },
-  opts = require "configs.conform",
 }
