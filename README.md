@@ -1,9 +1,24 @@
-**This repo is supposed to used as config by NvChad users!**
+# Pre-requisites
 
-- The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
-- So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
+- [Neovim 0.10](https://github.com/neovim/neovim/releases/tag/v0.10.0).
 
-# Credits
+- [Nerd Font](https://www.nerdfonts.com/) as your terminal font.
 
-1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
+- [Ripgrep](https://github.com/BurntSushi/ripgrep) is required for grep searching with Telescope.
+
+# Install
+
+```bash
+git clone https://github.com/youcef-s/neovim-setup?tab=readme-ov-file ~/.config/nvim && nvim
+```
+
+# Update
+```Lazy sync``` command
+
+# Uninstall
+
+```bash
+rm -rf ~/.config/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.local/share/nvim
+```
