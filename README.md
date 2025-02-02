@@ -9,7 +9,7 @@
 # Install
 
 ```bash
-git clone https://github.com/youcef-s/neovim-setup?tab=readme-ov-file ~/.config/nvim && nvim
+git clone https://github.com/youcef-s/neovim-setup ~/.config/nvim && nvim
 ```
 
 # Update
