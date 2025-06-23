@@ -6,16 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "falcon",
-
-	hl_override = {
-		Visual = { bg = "#2F2C2B", fg = "#ffffff" },
-
-		Search = { bg = "#f0a988", fg = "#000000" },
-
-		DiagnosticError = { fg = "#ff6c6b" },
-		DiagnosticWarn = { fg = "#ecbe7b" },
-	},
+	theme = "tokyonight",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
