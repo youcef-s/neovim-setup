@@ -34,3 +34,8 @@ map("n", "<leader>cq", function()
     require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
   end
 end, { desc = "CopilotChat - Quick chat" })
+
+map("n", "<leader>v", function()
+  require("nvchad.term").new { pos = "vsp", size = 0.35 }
+end, { desc = "Terminal - Vertical" })
+
