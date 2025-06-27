@@ -12,6 +12,8 @@ map("x", "<leader>p", [["_dP]])
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
+map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+
 map("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "CopilotChat - Open chat" })
 map("n", "<leader>ce", "<cmd>CopilotChatExplain<CR>", { desc = "CopilotChat - Explain code" })
 map("n", "<leader>cr", "<cmd>CopilotChatReview<CR>", { desc = "CopilotChat - Review code" })
